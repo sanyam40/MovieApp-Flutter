@@ -1,18 +1,27 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:moviecatalog/menu-drawer.dart';
+import 'data.dart'; // Importing the movie data
 
-class HindiGenre extends StatelessWidget {
-  const HindiGenre({Key? key}) : super(key: key);
+class GenreScreen extends StatelessWidget {
+  final String genre;
+
+  const GenreScreen({super.key, required this.genre});
 
   @override
   Widget build(BuildContext context) {
+    // Filter movies based on the selected genre
+    List<Movie> filteredMovies =
+        movies.where((movie) => movie.genre.contains(genre)).toList();
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Hindi Genre',
-          style: TextStyle(color: Colors.white),
+        title: Text(
+          '$genre Genre',
+          style: const TextStyle(color: Colors.white),
         ),
-        backgroundColor: const Color.fromARGB(255, 96, 3, 3),
+        backgroundColor: const Color.fromRGBO(12, 41, 65, 1),
       ),
       drawer: const MenuDrawer(),
       backgroundColor: const Color(0xFF00050D),
@@ -63,32 +72,13 @@ class HindiGenre extends StatelessWidget {
               crossAxisSpacing: 30,
               mainAxisSpacing: 40,
               padding: const EdgeInsets.all(10),
-              children: [
-                _buildPhotoListItem(
-                  imageUrl:
-                      'https://res.cloudinary.com/dhcvdux8e/image/upload/v1710443971/movie%20catalog/bastar.jpg',
-                  description: 'Bastar',
-                  rating: 4.5,
-                ),
-                _buildPhotoListItem(
-                  imageUrl:
-                      'https://res.cloudinary.com/dhcvdux8e/image/upload/f_auto,q_auto/v1/movie%20catalog/teri%20batoon',
-                  description: 'Teri batoon',
-                  rating: 5,
-                ),
-                _buildPhotoListItem(
-                  imageUrl:
-                      'https://miro.medium.com/v2/resize:fit:1400/1*dp9v_9BHhTwq6DPsFy84aw.jpeg',
-                  description: 'Masaan',
-                  rating: 5,
-                ),
-                _buildPhotoListItem(
-                  imageUrl:
-                      'https://res.cloudinary.com/dhcvdux8e/image/upload/v1710443971/movie%20catalog/bastar.jpg',
-                  description: 'Bastar',
-                  rating: 4.5,
-                ),
-              ],
+              children: filteredMovies.map((movie) {
+                return _buildPhotoListItem(
+                  imageUrl: movie.moviePhotoLink,
+                  description: movie.movieName,
+                  rating: movie.rating,
+                );
+              }).toList(),
             ),
           ),
         ],

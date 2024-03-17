@@ -1,11 +1,10 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:moviecatalog/genre-Hindi.dart';
 import 'package:moviecatalog/menu-drawer.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +40,18 @@ class HomeScreen extends StatelessWidget {
         unselectedItemColor: Colors.black,
         selectedItemColor: Colors.black,
         backgroundColor: Colors.blue,
+        onTap: (int index) {
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const GenreScreen(
+                  genre: '',
+                ),
+              ),
+            );
+          }
+        },
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -52,7 +63,9 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HindiGenre(),
+                        builder: (context) => const GenreScreen(
+                          genre: '',
+                        ),
                       ),
                     );
                   },
@@ -68,7 +81,9 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HindiGenre(),
+                        builder: (context) => const GenreScreen(
+                          genre: '',
+                        ),
                       ),
                     );
                   },
@@ -99,7 +114,8 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HindiGenre(),
+                        builder: (context) => const GenreScreen(
+                            genre: 'Hindi'), // Pass the genre to GenreScreen
                       ),
                     );
                   }),
@@ -109,7 +125,8 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HindiGenre(),
+                        builder: (context) => const GenreScreen(
+                            genre: 'English'), // Pass the genre to GenreScreen
                       ),
                     );
                   }),
@@ -119,7 +136,8 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HindiGenre(),
+                        builder: (context) => const GenreScreen(
+                            genre: 'Punjabi'), // Pass the genre to GenreScreen
                       ),
                     );
                   }),
@@ -129,7 +147,8 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HindiGenre(),
+                        builder: (context) => const GenreScreen(
+                            genre: 'Gujarati'), // Pass the genre to GenreScreen
                       ),
                     );
                   }),
@@ -139,7 +158,8 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HindiGenre(),
+                        builder: (context) => const GenreScreen(
+                            genre: 'Telugu'), // Pass the genre to GenreScreen
                       ),
                     );
                   }),
