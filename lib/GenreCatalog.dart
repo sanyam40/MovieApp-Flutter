@@ -1,7 +1,6 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:moviecatalog/BottomNavigationBar.dart';
+import 'package:moviecatalog/MovieDetail.dart';
 import 'package:moviecatalog/menu-drawer.dart';
 import 'data.dart'; // Importing the movie data
 
@@ -123,6 +122,17 @@ class _GenreScreenState extends State<GenreScreen> {
                   imageUrl: movie.moviePhotoLink,
                   description: movie.movieName,
                   rating: movie.rating,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MovieDetailsScreen(
+                          movieName: movie.movieName,
+                          movie: movie,
+                        ),
+                      ),
+                    );
+                  },
                 );
               }).toList(),
             ),
@@ -146,41 +156,48 @@ class _GenreScreenState extends State<GenreScreen> {
     required String imageUrl,
     required String description,
     double? rating,
+    required VoidCallback onTap,
   }) {
-    return Container(
-      height: 200,
-      width: 200,
-      child: Card(
-        color: const Color.fromARGB(255, 0, 0, 0),
-        child: SingleChildScrollView(
-          // Wrap content in SingleChildScrollView
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.network(
-                imageUrl,
-                height: 80,
-                width: 150,
-                fit: BoxFit.cover,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                description,
-                style: const TextStyle(color: Colors.white),
-              ),
-              if (rating != null)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.star, color: Colors.yellow, size: 20),
-                    const SizedBox(width: 4),
-                    Text(
-                      rating.toString(),
-                      style: const TextStyle(color: Colors.white),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          height: 200,
+          width: 200,
+          child: Card(
+            color: const Color.fromARGB(255, 0, 0, 0),
+            child: SingleChildScrollView(
+              // Wrap content in SingleChildScrollView
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.network(
+                    imageUrl,
+                    height: 80,
+                    width: 150,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    description,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  if (rating != null)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.star, color: Colors.yellow, size: 20),
+                        const SizedBox(width: 4),
+                        Text(
+                          rating.toString(),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-            ],
+                ],
+              ),
+            ),
           ),
         ),
       ),
