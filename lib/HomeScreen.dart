@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:moviecatalog/genre-Hindi.dart';
+import 'package:moviecatalog/BottomNavigationBar.dart';
+import 'package:moviecatalog/GenreCatalog.dart';
 import 'package:moviecatalog/menu-drawer.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,41 +19,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: const Color.fromRGBO(12, 41, 65, 1),
       ),
       drawer: const MenuDrawer(),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.movie),
-            label: 'Genre',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'My Account',
-          ),
-        ],
-        unselectedItemColor: Colors.black,
-        selectedItemColor: Colors.black,
-        backgroundColor: Colors.blue,
-        onTap: (int index) {
-          if (index == 2) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const GenreScreen(
-                  genre: '',
-                ),
-              ),
-            );
-          }
-        },
-      ),
+      bottomNavigationBar: const MyBottomNavigationBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -1,7 +1,10 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:moviecatalog/GenreCatalog.dart';
 import 'package:moviecatalog/main.dart';
 
 class MenuDrawer extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const MenuDrawer({Key? key});
 
   @override
@@ -27,6 +30,20 @@ class MenuDrawer extends StatelessWidget {
             onTap: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => const MyApp()));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.search, color: Colors.white),
+            title: const Text(
+              'Search',
+              style: TextStyle(fontSize: 20, color: Colors.white),
+            ),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const GenreScreen(
+                  genre: '',
+                ),
+              ));
             },
           ),
           ListTile(
