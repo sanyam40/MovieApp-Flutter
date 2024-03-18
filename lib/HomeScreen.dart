@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                     );
                   },
                   child: Image.network(
-                    'https://res.cloudinary.com/dtvaexasg/image/upload/v1710393330/flutter/movie_1.jpg',
+                    'https://stat4.bollywoodhungama.in/wp-content/uploads/2016/03/50368181.jpg',
                     height: 400,
                     width: 400,
                     fit: BoxFit.fill,
@@ -55,7 +55,43 @@ class HomeScreen extends StatelessWidget {
                     );
                   },
                   child: Image.network(
-                    'https://res.cloudinary.com/dtvaexasg/image/upload/v1710393546/flutter/movie_2.jpg',
+                    'https://m.media-amazon.com/images/I/818gvtO-taL._AC_UF1000,1000_QL80_.jpg',
+                    height: 400,
+                    width: 400,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const GenreScreen(
+                          genre: '',
+                        ),
+                      ),
+                    );
+                  },
+                  child: Image.network(
+                    'https://rukminim2.flixcart.com/image/850/1000/jthjki80/poster/r/y/b/small-boly3-dpostf-3-idiots-aamir-khan-bollywood-hindi-small-original-imafet9zgyuueswb.jpeg',
+                    height: 400,
+                    width: 400,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const GenreScreen(
+                          genre: '',
+                        ),
+                      ),
+                    );
+                  },
+                  child: Image.network(
+                    'https://miro.medium.com/v2/resize:fit:800/0*LbbxCXdsRDuCOQCC.jpg',
                     height: 400,
                     width: 400,
                     fit: BoxFit.fill,
